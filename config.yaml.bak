@@ -1,0 +1,9 @@
+sites:
+  - https://example.com
+  - https://example.org
+days: 30
+timeout: 10
+external: /path/to/external/program
+method: pipe
+args: -type=text -content="{message}"
+
