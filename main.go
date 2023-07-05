@@ -7,8 +7,8 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"io/ioutil"
 	"net/http"
+	"os"
 	"os/exec"
 	"strings"
 	"time"
@@ -26,7 +26,7 @@ type Config struct {
 }
 
 func getConfig() Config {
-	data, err := ioutil.ReadFile("config.yaml")
+	data, err := os.ReadFile("config.yaml")
 	if err != nil {
 		panic(err)
 	}
