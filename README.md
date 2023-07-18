@@ -1,5 +1,8 @@
 # SSL_BOT
  一个用来检测网站ssl是否过期的程序.
+
+# 参数
+`-c` 指定配置文件位置
  
 ## 配置文件
  将config.yaml.bak 改为config.yaml

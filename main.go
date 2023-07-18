@@ -6,6 +6,7 @@ package main
 import (
 	"bytes"
 	"context"
+	"flag"
 	"fmt"
 	"net/http"
 	"os"
@@ -25,8 +26,8 @@ type Config struct {
 	Args     string   `yaml:"args"`
 }
 
-func getConfig() Config {
-	data, err := os.ReadFile("config.yaml")
+func getConfig(configFile string) Config {
+	data, err := os.ReadFile(configFile)
 	if err != nil {
 		panic(err)
 	}
@@ -39,7 +40,11 @@ func getConfig() Config {
 }
 
 func main() {
-	config := getConfig()
+	// 解析命令行参数
+	configFile := flag.String("c", "config.yaml", "配置文件的位置")
+	flag.Parse()
+
+	config := getConfig(*configFile)
 	for _, site := range config.Sites {
 		checkCertificate(site, config.Days, config.Timeout, config.External, config.Method, config.Args)
 	}
